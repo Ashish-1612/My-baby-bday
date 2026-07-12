@@ -313,7 +313,17 @@ function showFinalMessage(){
 
         </p>
 
+        <p style="
+        margin-top:30px;
+        color:rgba(255,255,255,.6);
+        font-size:14px;
+        ">
+        (tap anywhere to close)
+        </p>
+
     `;
+
+    overlay.addEventListener("click", () => overlay.remove());
 
     document.body.appendChild(overlay);
 
