@@ -1,0 +1,216 @@
+/* ==========================================
+   Balloon Pop Mini-Game
+========================================== */
+
+#balloonSection{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+#balloonScene{
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    align-items: flex-start;
+
+    gap: 34px;
+
+    max-width: 900px;
+
+    margin-top: 20px;
+
+}
+
+.balloon{
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    width: 120px;
+
+    cursor: pointer;
+
+    user-select: none;
+
+}
+
+.balloon-body{
+
+    width: 74px;
+
+    height: 92px;
+
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+
+    background: var(--color, var(--pink));
+
+    position: relative;
+
+    box-shadow:
+        inset -10px -12px 18px rgba(0,0,0,.18),
+        0 12px 30px rgba(0,0,0,.35);
+
+    transition: transform .3s ease, opacity .3s ease;
+
+}
+
+.balloon-body::before{
+
+    /* highlight */
+
+    content:"";
+
+    position:absolute;
+
+    top:14px;
+
+    left:16px;
+
+    width:16px;
+
+    height:22px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.35);
+
+}
+
+.balloon-body::after{
+
+    /* knot */
+
+    content:"";
+
+    position:absolute;
+
+    bottom:-8px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:0;
+
+    height:0;
+
+    border-left:6px solid transparent;
+
+    border-right:6px solid transparent;
+
+    border-top:9px solid var(--color, var(--pink));
+
+}
+
+.balloon-string{
+
+    width:2px;
+
+    height:64px;
+
+    background:rgba(255,255,255,.45);
+
+    margin-top:2px;
+
+    transition: opacity .3s ease;
+
+}
+
+.balloon:hover .balloon-body{
+
+    transform: scale(1.06);
+
+}
+
+.balloon.popped .balloon-body,
+.balloon.popped .balloon-string{
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transform: scale(1.4);
+
+}
+
+.balloon-message{
+
+    display:none;
+
+    max-width:150px;
+
+    background: rgba(255,255,255,.10);
+
+    backdrop-filter: blur(14px);
+
+    border: 1px solid rgba(255,255,255,.18);
+
+    border-radius: 18px;
+
+    padding: 16px 14px;
+
+    font-size: 13px;
+
+    line-height:1.5;
+
+    text-align:center;
+
+    color:white;
+
+}
+
+.balloon.popped .balloon-message{
+
+    display:block;
+
+    animation: balloonMessagePop .5s ease;
+
+}
+
+@keyframes balloonMessagePop{
+
+    0%{
+
+        opacity:0;
+
+        transform:scale(.7) translateY(10px);
+
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:scale(1) translateY(0);
+
+    }
+
+}
+
+#balloonContinue{
+
+    margin-top: 46px;
+
+    opacity: 0;
+
+}
+
+#balloonHint{
+
+    margin-top: 18px;
+
+    font-size: 14px;
+
+    color: rgba(255,255,255,.65);
+
+}

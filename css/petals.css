@@ -1,0 +1,27 @@
+/* ==========================================
+   Ambient Falling Petals
+========================================== */
+
+#petals{
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -2;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+}
+
+.petal{
+
+    position: absolute;
+
+    top: -40px;
+
+    will-change: transform, opacity;
+
+}
