@@ -1,0 +1,404 @@
+/* ==========================================
+   Project Lavender v2
+   Premium 3D Gallery
+========================================== */
+
+#carousel{
+
+    position:relative;
+
+    width:100%;
+
+    max-width:1200px;
+
+    height:620px;
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    perspective:1800px;
+
+    overflow:hidden;
+
+}
+
+/* ==========================
+   Track
+========================== */
+
+.carousel-track{
+
+    position:relative;
+
+    width:100%;
+
+    height:100%;
+
+    transform-style:preserve-3d;
+
+}
+
+/* ==========================
+   Card
+========================== */
+
+.photo-card{
+
+    position:absolute;
+
+    top:50%;
+
+    left:50%;
+
+    width:280px;
+
+    height:420px;
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    transform-style:preserve-3d;
+
+    transition:
+
+        transform .9s cubic-bezier(.22,1,.36,1),
+
+        opacity .7s,
+
+        filter .8s;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    box-shadow:
+
+        0 30px 70px rgba(0,0,0,.35);
+
+}
+
+/* ==========================
+   Reflection
+========================== */
+
+.photo-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        linear-gradient(
+
+        120deg,
+
+        transparent 20%,
+
+        rgba(255,255,255,.22) 45%,
+
+        transparent 70%
+
+        );
+
+    transform:translateX(-120%);
+
+    transition:1s;
+
+}
+
+.photo-card:hover::before{
+
+    transform:translateX(130%);
+
+}
+
+/* ==========================
+   Image
+========================== */
+
+.photo-card img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    transition:transform .8s ease;
+
+}
+
+.photo-card:hover img{
+
+    transform:scale(1.08);
+
+}
+
+/* ==========================
+   Caption
+========================== */
+
+.photo-caption{
+
+    position:absolute;
+
+    left:0;
+
+    right:0;
+
+    bottom:0;
+
+    padding:24px;
+
+    color:white;
+
+    background:
+
+    linear-gradient(
+
+        transparent,
+
+        rgba(0,0,0,.75)
+
+    );
+
+}
+
+.photo-caption h3{
+
+    font-size:22px;
+
+    font-weight:600;
+
+}
+
+.photo-caption p{
+
+    margin-top:8px;
+
+    font-size:14px;
+
+    color:#F8E8FF;
+
+}
+
+/* ==========================
+   Center Card
+========================== */
+
+.photo-card.active{
+
+    z-index:50;
+
+    filter:none;
+
+    transform:
+
+        translate(-50%,-50%)
+
+        scale(1.12);
+
+}
+
+/* ==========================
+   Side Cards
+========================== */
+
+.photo-card.left{
+
+    opacity:.75;
+
+    filter:blur(1px);
+
+}
+
+.photo-card.right{
+
+    opacity:.75;
+
+    filter:blur(1px);
+
+}
+
+/* ==========================
+   Controls
+========================== */
+
+.carousel-nav{
+
+    position:absolute;
+
+    top:50%;
+
+    width:58px;
+
+    height:58px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:26px;
+
+    color:white;
+
+    cursor:pointer;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(12px);
+
+    transition:.3s;
+
+    user-select:none;
+
+}
+
+.carousel-nav:hover{
+
+    transform:scale(1.1);
+
+    background:rgba(255,255,255,.22);
+
+}
+
+.carousel-prev{
+
+    left:15px;
+
+}
+
+.carousel-next{
+
+    right:15px;
+
+}
+
+/* ==========================
+   Indicators
+========================== */
+
+.carousel-dots{
+
+    position:absolute;
+
+    bottom:20px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    gap:12px;
+
+}
+
+.carousel-dot{
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.35);
+
+    transition:.4s;
+
+}
+
+.carousel-dot.active{
+
+    width:34px;
+
+    border-radius:20px;
+
+    background:#FF7BC4;
+
+}
+
+/* ==========================
+   Floating Animation
+========================== */
+
+.photo-card{
+
+    animation:
+
+        floatCard 6s ease-in-out infinite;
+
+}
+
+@keyframes floatCard{
+
+    0%,100%{
+
+        translate:0 0;
+
+    }
+
+    50%{
+
+        translate:0 -12px;
+
+    }
+
+}
+
+/* ==========================
+   Mobile
+========================== */
+
+@media(max-width:768px){
+
+#carousel{
+
+height:500px;
+
+}
+
+.photo-card{
+
+width:220px;
+
+height:340px;
+
+}
+
+.photo-caption h3{
+
+font-size:18px;
+
+}
+
+.photo-caption p{
+
+font-size:13px;
+
+}
+
+.carousel-nav{
+
+display:none;
+
+}
+
+}
