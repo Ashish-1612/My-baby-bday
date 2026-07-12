@@ -1,0 +1,397 @@
+/* ==========================================
+   Project Lavender v2
+   Sections Styling
+========================================== */
+
+.page{
+
+    position:relative;
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    padding:90px 30px;
+
+    overflow:hidden;
+
+}
+
+/* Decorative Glow */
+
+.page::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    border-radius:50%;
+
+    background:radial-gradient(
+
+        rgba(255,123,196,.18),
+
+        transparent 70%
+
+    );
+
+    filter:blur(80px);
+
+    animation:floatGlow 18s ease-in-out infinite;
+
+    z-index:-1;
+
+}
+
+/* Section Titles */
+
+.section-title{
+
+    text-align:center;
+
+    margin-bottom:60px;
+
+    max-width:750px;
+
+}
+
+.section-title h2{
+
+    font-family:"Great Vibes",cursive;
+
+    font-size:64px;
+
+    color:white;
+
+    margin-bottom:15px;
+
+    text-shadow:
+
+        0 0 20px rgba(255,255,255,.25);
+
+}
+
+.section-title p{
+
+    font-size:18px;
+
+    color:#EBDCFF;
+
+    line-height:1.8;
+
+}
+
+/* Glass Containers */
+
+.glass{
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:30px;
+
+    box-shadow:
+
+        0 20px 70px rgba(0,0,0,.35);
+
+}
+
+/* Letter */
+
+#letterContainer{
+
+    width:min(90%,850px);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    gap:30px;
+
+}
+
+#envelope{
+
+    width:160px;
+
+    height:120px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:54px;
+
+    border-radius:20px;
+
+    cursor:pointer;
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            #ff7bc4,
+
+            #9d4edd
+
+        );
+
+    box-shadow:
+
+        0 15px 40px rgba(0,0,0,.35);
+
+    transition:.4s;
+
+}
+
+#envelope:hover{
+
+    transform:
+
+        translateY(-8px)
+
+        scale(1.05);
+
+}
+
+#letter{
+
+    display:none;
+
+    width:100%;
+
+    max-width:760px;
+
+    padding:45px;
+
+    border-radius:25px;
+
+    background:white;
+
+    color:#333;
+
+    font-size:18px;
+
+    line-height:2;
+
+    box-shadow:
+
+        0 20px 60px rgba(0,0,0,.35);
+
+}
+
+/* Gift Section */
+
+#giftBox{
+
+    animation:
+
+        giftFloat 3.5s ease-in-out infinite;
+
+}
+
+/* Fade Up */
+
+.fade-up{
+
+    opacity:0;
+
+    transform:
+
+        translateY(50px);
+
+}
+
+.fade-up.show{
+
+    opacity:1;
+
+    transform:
+
+        translateY(0);
+
+    transition:
+
+        opacity .8s ease,
+
+        transform .8s ease;
+
+}
+
+/* Divider */
+
+.section-divider{
+
+    width:120px;
+
+    height:4px;
+
+    border-radius:20px;
+
+    background:
+
+        linear-gradient(
+
+            to right,
+
+            #ff7bc4,
+
+            #d8b4fe,
+
+            #ffffff
+
+        );
+
+    margin:30px auto;
+
+}
+
+/* Floating Hearts */
+
+.floating-heart{
+
+    position:absolute;
+
+    font-size:24px;
+
+    opacity:.2;
+
+    animation:
+
+        floatHeart 14s linear infinite;
+
+    pointer-events:none;
+
+}
+
+/* Animations */
+
+@keyframes floatGlow{
+
+    0%{
+
+        transform:
+
+            translate(-100px,-80px);
+
+    }
+
+    50%{
+
+        transform:
+
+            translate(120px,60px);
+
+    }
+
+    100%{
+
+        transform:
+
+            translate(-100px,-80px);
+
+    }
+
+}
+
+@keyframes giftFloat{
+
+    0%,100%{
+
+        transform:
+
+            translateY(0);
+
+    }
+
+    50%{
+
+        transform:
+
+            translateY(-15px);
+
+    }
+
+}
+
+@keyframes floatHeart{
+
+    0%{
+
+        transform:
+
+            translateY(100vh)
+
+            rotate(0deg);
+
+    }
+
+    100%{
+
+        transform:
+
+            translateY(-120vh)
+
+            rotate(360deg);
+
+    }
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.section-title h2{
+
+font-size:44px;
+
+}
+
+.section-title p{
+
+font-size:16px;
+
+}
+
+#letter{
+
+padding:28px;
+
+font-size:16px;
+
+line-height:1.9;
+
+}
+
+#envelope{
+
+width:130px;
+
+height:100px;
+
+font-size:42px;
+
+}
+
+}
