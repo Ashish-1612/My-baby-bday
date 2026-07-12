@@ -1,0 +1,362 @@
+/* ==========================================
+   Project Lavender v2
+   Cinematic Loader
+========================================== */
+
+#loader{
+
+position:fixed;
+inset:0;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+background:
+radial-gradient(circle at top,#2A0B45 0%,#12041d 100%);
+
+z-index:99999;
+
+transition:
+opacity 1s ease,
+visibility 1s ease;
+
+overflow:hidden;
+
+}
+
+#loader.hide{
+
+opacity:0;
+visibility:hidden;
+
+}
+
+.loader-content{
+
+position:relative;
+
+width:min(90%,520px);
+
+padding:50px 35px;
+
+text-align:center;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.12);
+
+border-radius:30px;
+
+box-shadow:
+0 25px 80px rgba(0,0,0,.45);
+
+animation:loaderCard 1.4s ease;
+
+}
+
+.loader-heart{
+
+font-size:72px;
+
+margin-bottom:25px;
+
+animation:
+heartbeat 1.6s infinite,
+heartGlow 2.5s infinite;
+
+}
+
+.loader-content h3{
+
+font-size:20px;
+
+font-weight:400;
+
+letter-spacing:2px;
+
+color:#D8B4FE;
+
+opacity:0;
+
+animation:fadeUp .8s ease .4s forwards;
+
+}
+
+.loader-content h1{
+
+font-family:"Great Vibes",cursive;
+
+font-size:72px;
+
+margin:15px 0;
+
+color:#ffffff;
+
+text-shadow:
+0 0 18px rgba(255,255,255,.35);
+
+opacity:0;
+
+animation:fadeUp .8s ease .9s forwards;
+
+}
+
+.loader-content p{
+
+margin-top:20px;
+
+line-height:1.8;
+
+font-size:16px;
+
+color:#ffe7f6;
+
+opacity:0;
+
+animation:fadeUp .8s ease 1.3s forwards;
+
+}
+
+#enterButton{
+
+margin-top:35px;
+
+opacity:0;
+
+animation:fadeUp .8s ease 1.8s forwards;
+
+}
+
+/* ======================
+Floating Lights
+====================== */
+
+#loader::before,
+#loader::after{
+
+content:"";
+
+position:absolute;
+
+width:380px;
+height:380px;
+
+border-radius:50%;
+
+filter:blur(80px);
+
+opacity:.35;
+
+animation:orbFloat 10s ease-in-out infinite;
+
+}
+
+#loader::before{
+
+background:#9D4EDD;
+
+left:-120px;
+top:-120px;
+
+}
+
+#loader::after{
+
+background:#FF7BC4;
+
+right:-120px;
+bottom:-120px;
+
+animation-delay:5s;
+
+}
+
+/* ======================
+Animations
+====================== */
+
+@keyframes loaderCard{
+
+from{
+
+transform:
+translateY(40px)
+scale(.9);
+
+opacity:0;
+
+}
+
+to{
+
+transform:
+translateY(0)
+scale(1);
+
+opacity:1;
+
+}
+
+}
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+
+transform:
+translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:
+translateY(0);
+
+}
+
+}
+
+@keyframes heartbeat{
+
+0%,100%{
+
+transform:scale(1);
+
+}
+
+25%{
+
+transform:scale(1.08);
+
+}
+
+50%{
+
+transform:scale(1.16);
+
+}
+
+75%{
+
+transform:scale(1.08);
+
+}
+
+}
+
+@keyframes heartGlow{
+
+0%,100%{
+
+filter:
+drop-shadow(0 0 6px #ff7bc4);
+
+}
+
+50%{
+
+filter:
+drop-shadow(0 0 25px #ff7bc4)
+drop-shadow(0 0 50px #d8b4fe);
+
+}
+
+}
+
+@keyframes orbFloat{
+
+0%{
+
+transform:
+translate(0,0)
+scale(1);
+
+}
+
+25%{
+
+transform:
+translate(50px,-30px)
+scale(1.15);
+
+}
+
+50%{
+
+transform:
+translate(0,40px)
+scale(.95);
+
+}
+
+75%{
+
+transform:
+translate(-40px,-20px)
+scale(1.08);
+
+}
+
+100%{
+
+transform:
+translate(0,0)
+scale(1);
+
+}
+
+}
+
+/* ======================
+Responsive
+====================== */
+
+@media(max-width:768px){
+
+.loader-content{
+
+padding:40px 25px;
+
+}
+
+.loader-heart{
+
+font-size:58px;
+
+}
+
+.loader-content h1{
+
+font-size:56px;
+
+}
+
+.loader-content h3{
+
+font-size:16px;
+
+letter-spacing:1px;
+
+}
+
+.loader-content p{
+
+font-size:15px;
+
+}
+
+#enterButton{
+
+width:100%;
+
+}
+
+}
