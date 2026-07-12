@@ -1,0 +1,371 @@
+/* ==========================================
+   Project Lavender v2
+   Premium 3D Birthday Cake
+========================================== */
+
+#cakeScene{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    width:100%;
+    min-height:650px;
+
+    perspective:1200px;
+
+}
+
+/* Cake */
+
+.cake{
+
+    position:relative;
+
+    width:280px;
+    height:340px;
+
+    transform-style:preserve-3d;
+
+    animation:cakeFloat 5s ease-in-out infinite;
+
+}
+
+/* Cake Layers */
+
+.layer{
+
+    position:absolute;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    border-radius:20px;
+
+    background:linear-gradient(
+        180deg,
+        #ffd6ec,
+        #ff7bc4
+    );
+
+    border:2px solid rgba(255,255,255,.2);
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.25),
+        inset 0 5px 10px rgba(255,255,255,.3);
+
+}
+
+/* Bottom */
+
+.layer1{
+
+    width:240px;
+    height:90px;
+
+    bottom:0;
+
+}
+
+/* Middle */
+
+.layer2{
+
+    width:180px;
+    height:80px;
+
+    bottom:90px;
+
+}
+
+/* Top */
+
+.layer3{
+
+    width:120px;
+    height:70px;
+
+    bottom:170px;
+
+}
+
+/* Frosting */
+
+.frosting{
+
+    position:absolute;
+
+    width:100%;
+    height:22px;
+
+    top:0;
+
+    border-radius:20px 20px 10px 10px;
+
+    background:white;
+
+    overflow:hidden;
+
+}
+
+.frosting::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    radial-gradient(circle at 15% 100%, white 10px, transparent 11px),
+    radial-gradient(circle at 35% 100%, white 10px, transparent 11px),
+    radial-gradient(circle at 55% 100%, white 10px, transparent 11px),
+    radial-gradient(circle at 75% 100%, white 10px, transparent 11px),
+    radial-gradient(circle at 95% 100%, white 10px, transparent 11px);
+
+}
+
+/* Candles */
+
+.candle{
+
+    position:absolute;
+
+    width:12px;
+    height:50px;
+
+    background:
+    repeating-linear-gradient(
+        45deg,
+        white,
+        white 5px,
+        #ff7bc4 5px,
+        #ff7bc4 10px
+    );
+
+    border-radius:6px;
+
+    top:-40px;
+
+}
+
+.candle:nth-child(1){
+
+left:18px;
+
+}
+
+.candle:nth-child(2){
+
+left:52px;
+
+}
+
+.candle:nth-child(3){
+
+left:86px;
+
+}
+
+/* Flames */
+
+.flame{
+
+    position:absolute;
+
+    width:18px;
+    height:26px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    top:-18px;
+
+    background:radial-gradient(
+        circle,
+        #fff799 10%,
+        orange 55%,
+        #ff5c00 100%
+    );
+
+    border-radius:50% 50% 50% 50%;
+
+    filter:blur(.5px);
+
+    animation:flicker .18s infinite alternate;
+
+    box-shadow:
+    0 0 18px gold,
+    0 0 35px orange;
+
+}
+
+/* Cake Stand */
+
+.stand{
+
+    width:320px;
+    height:24px;
+
+    margin-top:20px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(15px);
+
+    box-shadow:0 15px 30px rgba(0,0,0,.3);
+
+}
+
+/* Blow Button */
+
+#blowCandles{
+
+    margin-top:40px;
+
+}
+
+/* Smoke */
+
+.smoke{
+
+    position:absolute;
+
+    width:14px;
+    height:14px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.45);
+
+    filter:blur(6px);
+
+    animation:smokeUp 3s linear forwards;
+
+}
+
+/* Floating Sparkles */
+
+.cake-sparkle{
+
+    position:absolute;
+
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:white;
+
+    box-shadow:0 0 12px white;
+
+    animation:twinkle 2s infinite;
+
+}
+
+/* Animations */
+
+@keyframes flicker{
+
+    from{
+
+        transform:
+        translateX(-50%)
+        scale(.95)
+        rotate(-2deg);
+
+    }
+
+    to{
+
+        transform:
+        translateX(-50%)
+        scale(1.1)
+        rotate(2deg);
+
+    }
+
+}
+
+@keyframes cakeFloat{
+
+    0%,100%{
+
+        transform:
+        translateY(0);
+
+    }
+
+    50%{
+
+        transform:
+        translateY(-12px);
+
+    }
+
+}
+
+@keyframes smokeUp{
+
+    from{
+
+        opacity:.7;
+
+        transform:
+        translateY(0)
+        scale(.8);
+
+    }
+
+    to{
+
+        opacity:0;
+
+        transform:
+        translateY(-80px)
+        scale(2);
+
+    }
+
+}
+
+@keyframes twinkle{
+
+    0%,100%{
+
+        opacity:.3;
+        transform:scale(.8);
+
+    }
+
+    50%{
+
+        opacity:1;
+        transform:scale(1.5);
+
+    }
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.cake{
+
+transform:scale(.82);
+
+}
+
+.stand{
+
+width:270px;
+
+}
+
+}
