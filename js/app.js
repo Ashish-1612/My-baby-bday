@@ -169,16 +169,18 @@ window.completeCake = function(){
 }
 
 /* ==========================
-   Scroll To Gift
+   Scroll To Next Surprise
 ========================== */
 
 function scrollToGift(){
 
-    const gift=document.getElementById("giftBox");
+    const next =
+        document.getElementById("balloonSection") ||
+        document.getElementById("giftBox");
 
-    if(!gift) return;
+    if(!next) return;
 
-    gift.scrollIntoView({
+    next.scrollIntoView({
 
         behavior:"smooth",
 
