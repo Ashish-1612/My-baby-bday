@@ -206,6 +206,11 @@ function initializeGiftBox(){
 
 function openGift(){
 
+    // Prevent double-tap during the animation window only
+    if(openGift._busy) return;
+    openGift._busy = true;
+    setTimeout(()=>{ openGift._busy = false; }, 1000);
+
     const gift=document.getElementById("giftBox");
 
     gift.animate([
@@ -341,7 +346,8 @@ function showFinalMessage(){
 
     const heartInterval = createHeartRain();
 
-    overlay.addEventListener("click", () => {
+    overlay.addEventListener("click", (e) => {
+        e.stopPropagation();
         clearInterval(heartInterval);
         overlay.remove();
     });
