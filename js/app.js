@@ -206,10 +206,6 @@ function initializeGiftBox(){
 
 function openGift(){
 
-    if(giftOpened) return;
-
-    giftOpened=true;
-
     const gift=document.getElementById("giftBox");
 
     gift.animate([
@@ -257,10 +253,10 @@ function showFinalMessage(){
     overlay.style.background="rgba(10,0,20,.95)";
     overlay.style.display="flex";
     overlay.style.flexDirection="column";
-    overlay.style.justifyContent="normal";
     overlay.style.alignItems="center";
+    overlay.style.justifyContent="flex-start";
     overlay.style.zIndex="999999";
-    overlay.style.padding="40px 24px";
+    overlay.style.padding="0 24px";
     overlay.style.textAlign="center";
     overlay.style.overflowY="auto";
     overlay.style.webkitOverflowScrolling="touch";
@@ -269,13 +265,16 @@ function showFinalMessage(){
     overlay.innerHTML=`
 
         <div style="
-        margin:auto 0;
+        margin:auto;
+        min-height:100%;
         max-width:700px;
         width:100%;
-        padding:20px 0;
+        padding:48px 0 40px;
         display:flex;
         flex-direction:column;
         align-items:center;
+        justify-content:center;
+        box-sizing:border-box;
         ">
 
         <div style="
@@ -340,11 +339,14 @@ function showFinalMessage(){
 
     `;
 
-    overlay.addEventListener("click", () => overlay.remove());
+    const heartInterval = createHeartRain();
+
+    overlay.addEventListener("click", () => {
+        clearInterval(heartInterval);
+        overlay.remove();
+    });
 
     document.body.appendChild(overlay);
-
-    createHeartRain();
 
 }
 
@@ -354,7 +356,7 @@ function showFinalMessage(){
 
 function createHeartRain(){
 
-    setInterval(()=>{
+    return setInterval(()=>{
 
         const heart=document.createElement("div");
 
