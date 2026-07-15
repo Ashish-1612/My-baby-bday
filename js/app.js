@@ -257,13 +257,26 @@ function showFinalMessage(){
     overlay.style.background="rgba(10,0,20,.95)";
     overlay.style.display="flex";
     overlay.style.flexDirection="column";
-    overlay.style.justifyContent="center";
+    overlay.style.justifyContent="normal";
     overlay.style.alignItems="center";
     overlay.style.zIndex="999999";
-    overlay.style.padding="30px";
+    overlay.style.padding="40px 24px";
     overlay.style.textAlign="center";
+    overlay.style.overflowY="auto";
+    overlay.style.webkitOverflowScrolling="touch";
+    overlay.style.boxSizing="border-box";
 
     overlay.innerHTML=`
+
+        <div style="
+        margin:auto 0;
+        max-width:700px;
+        width:100%;
+        padding:20px 0;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        ">
 
         <div style="
         font-size:90px;
@@ -322,6 +335,8 @@ function showFinalMessage(){
         ">
         (tap anywhere to close)
         </p>
+
+        </div>
 
     `;
 
